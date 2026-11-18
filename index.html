@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scratch – Rappels des notions de base (cycle 4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1F3864; --navy2:#2E5597; --ink:#1d2433; --muted:#5b6475; --line:#c9d3e6; --bg:#f5f7fb; --paper:#fff;
+  --mo:#4C97FF; --mo-d:#3373CC; --lo:#9966FF; --lo-d:#774DCB; --ev:#FFBF00; --ev-d:#CC9900;
+  --ct:#FFAB19; --ct-d:#CF8B17; --se:#5CB1D6; --se-d:#2E8EB8; --op:#59C059; --op-d:#389438;
+  --va:#FF8C1A; --va-d:#DB6E00; --pen:#0FBD8C; --pen-d:#0B8E69;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Nunito","Segoe UI",Arial,sans-serif}
+.page{max-width:1240px;margin:0 auto;padding:18px 16px 40px}
+/* En-tête (même structure que les documents Word) */
+.banner{display:grid;grid-template-columns:64px 1fr auto auto;align-items:stretch;border:2px solid var(--navy);border-radius:6px;overflow:hidden;background:var(--paper)}
+.banner .logo{background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px}
+.banner .ttl{padding:10px 16px;text-align:center}
+.banner .ttl .l1{font-weight:800;font-size:20px;color:var(--navy);letter-spacing:.06em}
+.banner .ttl .l2{font-weight:700;font-size:15px;color:var(--navy2)}
+.banner .yr,.banner .lvl{display:flex;align-items:center;justify-content:center;padding:0 18px;font-weight:800;font-style:italic;border-left:2px solid var(--navy);color:var(--navy);font-size:18px}
+.banner .lvl{background:var(--navy);color:#fff}
+h2.sec{margin:26px 0 6px;font-size:18px;color:var(--navy);border-bottom:3px solid var(--navy);padding-bottom:4px;letter-spacing:.02em}
+.lead{color:var(--muted);margin:6px 0 14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+/* Coordonnées */
+.coords{display:grid;grid-template-columns:minmax(220px,300px) 1fr 200px;gap:18px;align-items:center}
+.coords p{margin:0 0 8px}
+.stagebig{width:100%;height:auto}
+.stagebig .stage{fill:#fff;stroke:var(--navy);stroke-width:1.5}
+.orient{width:100%;max-width:200px;height:auto;display:block;margin:auto}
+.cap{font-size:12px;font-style:italic;color:var(--muted);text-align:center;margin-top:2px}
+.gr{stroke:#e3e8f2;stroke-width:.7}.gr.ax{stroke:#7d8aa5;stroke-width:1.1}
+.tick{font-size:9px;fill:#6b7690;text-anchor:middle}.tick.b{font-weight:700;fill:var(--navy)}
+.axl{font-size:11px;font-weight:700;fill:var(--navy);font-style:italic}
+.orig{fill:var(--navy)}
+.proj{stroke:#d9534f;stroke-dasharray:3 3;stroke-width:1}
+.pt{fill:#d9534f}.ptl{font-size:10px;font-weight:700;fill:#d9534f}
+.oc{fill:#fff;stroke:var(--navy);stroke-width:1.5}.octk{stroke:var(--navy);stroke-width:1}
+.ocar{stroke:var(--mo-d);stroke-width:2}
+.ocl{font-size:12px;font-weight:800;fill:var(--navy);text-anchor:middle}
+.ocs{font-size:0}
+.rot{fill:none;stroke-width:1.8}.rot.r{stroke:#d9534f}.rot.l{stroke:#2E8EB8}
+.rotl{font-size:14px;font-weight:800;text-anchor:middle}.rotl.r{fill:#d9534f}.rotl.l{fill:#2E8EB8}
+kbd,.k{font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px}
+.chip{color:#fff;font-weight:700;font-size:13px;padding:5px 12px;border-radius:14px;border:1px solid rgba(0,0,0,.15)}
+.chip.mo{background:var(--mo)}.chip.lo{background:var(--lo)}.chip.ev{background:var(--ev);color:#3b2d00}.chip.ct{background:var(--ct)}
+.chip.se{background:var(--se)}.chip.op{background:var(--op)}.chip.va{background:var(--va)}.chip.pen{background:var(--pen)}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px}.sw.se{background:var(--se)}.sw.op{background:var(--op)}
+/* Notions */
+.colheads{display:grid;grid-template-columns:.9fr 1.05fr 1.45fr .9fr;gap:10px;margin:14px 0 6px;position:sticky;top:0;z-index:3}
+.colheads div{background:var(--navy);color:#fff;font-weight:800;font-size:13px;text-align:center;padding:7px 4px;border-radius:5px}
+.notion{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--navy2);border-radius:8px;margin:14px 0;padding:12px 14px 14px}
+.nh{margin:0;font-size:16px;color:var(--navy);display:flex;align-items:center;gap:10px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px}
+.ndesc{margin:4px 0 10px;color:#33405a}
+.grid4{display:grid;grid-template-columns:.9fr 1.05fr 1.45fr .9fr;gap:10px;align-items:stretch}
+.col{border:1px solid #e1e7f2;border-radius:6px;padding:8px;background:#fbfcfe;min-width:0}
+.colh{display:none;font-weight:800;font-size:12px;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.res .colh{display:flex;justify-content:space-between;align-items:center}
+.algo{font-size:13px;line-height:1.6;font-weight:600}
+.algo b{color:var(--navy2)}
+.al{white-space:nowrap}
+.note{font-size:12px;color:var(--muted);margin:6px 0 0;font-style:italic}
+.sep{height:1px;background:#dfe5f0;margin:8px 0}
+/* Logigrammes */
+.fcwrap{display:flex;justify-content:center}
+.fcpair{display:flex;flex-direction:column;gap:6px;align-items:center;width:100%}
+.fc{width:100%;height:auto}
+.fc .term{fill:#e6ecf8;stroke:var(--navy);stroke-width:1.3}
+.fc .act{fill:#fff;stroke:var(--navy);stroke-width:1.2}
+.fc .dia{fill:#fff6e0;stroke:#c58a00;stroke-width:1.3}
+.fc .t{font-size:11px;text-anchor:middle;fill:var(--ink);font-family:"Nunito","Segoe UI",Arial,sans-serif}
+.fc .t.b{font-weight:800;fill:var(--navy)}
+.fc .ln{fill:none;stroke:#44506a;stroke-width:1.2}
+.fc .lb{font-size:10px;font-weight:800;fill:#b25d00}
+.fc .ft{font-size:10.5px;font-weight:800;fill:var(--navy2)}
+/* Blocs Scratch */
+.script.tight{font-size:10px;zoom:.86}.script.tight .bool{padding:2px 8px}
+.blkwrap{display:flex;justify-content:flex-start;overflow-x:auto}
+.stack{display:flex;flex-direction:column;gap:6px}
+.tag{display:inline-block;font-size:11px;font-weight:800;color:var(--navy2);text-transform:uppercase;letter-spacing:.04em}
+.script{display:inline-flex;flex-direction:column;align-items:flex-start;font-size:11.5px;font-weight:700;color:#fff;padding:2px 0}
+.blk{position:relative;padding:5px 8px;border-radius:4px;border:1px solid rgba(0,0,0,.18);white-space:nowrap;min-height:30px;display:flex;align-items:center;gap:4px;margin-top:-1px}
+.blk::before{content:"";position:absolute;left:12px;top:-1px;width:16px;height:4px;background:rgba(0,0,0,.12);border-radius:0 0 4px 4px}
+.blk.hat{border-radius:18px 18px 4px 4px;padding-top:12px}
+.blk.hat::before{display:none}
+.flag{color:#2c9b38;background:#fff;border-radius:3px;padding:0 3px;font-size:12px}
+.ico{font-size:13px}
+.mo{background:var(--mo);border-color:var(--mo-d)}.lo{background:var(--lo);border-color:var(--lo-d)}
+.ev{background:var(--ev);border-color:var(--ev-d)}.ct{background:var(--ct);border-color:var(--ct-d)}
+.se{background:var(--se);border-color:var(--se-d)}.op{background:var(--op);border-color:var(--op-d)}
+.va{background:var(--va);border-color:var(--va-d)}.pen{background:var(--pen);border-color:var(--pen-d)}
+.in{background:#fff;color:#575e75;border-radius:10px;padding:1px 8px;font-weight:600;border:1px solid rgba(0,0,0,.12);min-width:20px;text-align:center}
+.dd{background:rgba(0,0,0,.14);border-radius:10px;padding:1px 8px;border:1px solid rgba(0,0,0,.12)}
+.rep{border-radius:10px;padding:1px 7px;border:1px solid rgba(0,0,0,.18)}
+.bool{display:inline-flex;align-items:center;gap:3px;padding:2px 10px;clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 50%,calc(100% - 9px) 100%,9px 100%,0 50%);border:none;filter:brightness(.98)}
+.bool .bool{filter:brightness(1.04)}
+.cb{display:flex;flex-direction:column;align-items:flex-start;margin-top:-1px;background:transparent!important;border:none!important;padding:0}
+.cb>.ctop,.cb>.cmid,.cb>.cbot{border:1px solid rgba(0,0,0,.18);white-space:nowrap}
+.cb.ct>.ctop,.cb.ct>.cmid,.cb.ct>.cbot{background:var(--ct);border-color:var(--ct-d)}
+.ctop{padding:6px 10px;border-radius:4px 4px 4px 0;display:flex;align-items:center;gap:4px;min-height:30px;position:relative}
+.ctop::before{content:"";position:absolute;left:12px;top:-1px;width:16px;height:4px;background:rgba(0,0,0,.12);border-radius:0 0 4px 4px}
+.cmid{padding:5px 10px;border-radius:0 4px 4px 0;min-width:60px}
+.cin{border-left:14px solid var(--ct);padding:0 0 0 0;display:flex;flex-direction:column;align-items:flex-start;min-height:20px}
+.cb.ct>.cin{border-left-color:var(--ct)}
+.cbot{height:14px;width:60px;border-radius:0 0 4px 4px}
+.cbot:not(.cap){border-radius:0 0 4px 4px}
+.cbot.cap{height:12px;width:40px}
+/* Figures */
+.figwrap{display:flex;justify-content:center;align-items:center;min-height:80px}
+.fig{width:100%;max-width:200px;height:auto;background:#fff;border:1px solid #dfe5f0;border-radius:4px}
+.fig.wide{max-width:260px}
+.pen{fill:none;stroke:#0B8E69;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.sprite polygon{fill:var(--mo);stroke:var(--mo-d);stroke-width:1}
+.limit{stroke:#d9534f;stroke-width:1.5;stroke-dasharray:4 3}.lim{font-size:10px;font-weight:800;fill:#d9534f}
+.track{stroke:#0B8E69;stroke-width:1.5;stroke-dasharray:3 3}
+.what{font-size:13px;margin:8px 0 0}
+.replay{font:inherit;font-size:11px;font-weight:800;border:1px solid var(--line);background:#fff;color:var(--navy2);border-radius:12px;padding:2px 9px;cursor:pointer;text-transform:none;letter-spacing:0}
+.replay:hover{background:#eef3fc}
+.demo{display:flex;flex-direction:column;gap:8px;width:100%}
+.demo-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.demo .tag{width:92px}
+.kbd{border:1px solid #9aa6bd;border-bottom-width:3px;border-radius:5px;padding:1px 8px;font-size:12px;font-weight:700;background:#fff}
+.kbd.up{background:#f1f3f7;color:#6b7690}
+.arrow{color:var(--muted)}
+.small{font-size:11px;color:var(--muted)}
+.bubble{position:relative;background:#fff;border:2px solid #b8c1d3;border-radius:12px;padding:2px 10px;font-weight:700;font-size:13px}
+.counter{display:flex;flex-direction:column;gap:10px;align-items:center}
+.vrow{display:flex;align-items:center;gap:6px}
+.vname{background:var(--va);color:#fff;font-weight:800;font-size:12px;padding:3px 8px;border-radius:4px}
+.cells{display:flex;gap:3px}
+.cell{width:22px;height:24px;display:flex;align-items:center;justify-content:center;border:1px solid #f0c28f;border-radius:4px;font-weight:800;font-size:12px;color:#a85300;background:#fff}
+/* animations (déclenchées par la classe .play) */
+.play .pen{animation:draw var(--dur,1.6s) ease-in-out both}
+.play .sprite{animation:fadein .3s both;animation-delay:var(--dur,1.6s)}
+.play .mover{animation:move 1.8s ease-in-out both}
+.play .cell{animation:pop .3s both;animation-delay:calc(var(--k) * .3s)}
+.play .late{animation:fadein .4s both;animation-delay:2.2s}
+.play .bubble:not(.late){animation:fadein .5s both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes move{from{transform:translateX(0)}to{transform:translateX(var(--dx))}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.play *{animation:none!important}}
+footer{margin-top:26px;text-align:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+/* Responsive */
+@media (max-width:980px){
+  .colheads{display:none}
+  .grid4{grid-template-columns:1fr 1fr}
+  .colh{display:block}
+  .coords{grid-template-columns:1fr 1fr}
+  .coords .ctext{grid-column:1 / -1;order:-1}
+}
+@media (max-width:600px){
+  .grid4{grid-template-columns:1fr}
+  .coords{grid-template-columns:1fr}
+  .banner{grid-template-columns:44px 1fr auto}
+  .banner .yr{display:none}
+  .banner .ttl .l1{font-size:16px}
+}
+@media print{
+  body{background:#fff;font-size:12px}
+  .colheads{position:static}
+  .notion{break-inside:avoid}
+  .replay{display:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#44506a"/></marker>
+<marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3373CC"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9534f"/></marker>
+<marker id="ahl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2E8EB8"/></marker>
+</defs></svg>
+<div class="page">
+  <header class="banner">
+    <div class="logo" aria-hidden="true">⚙</div>
+    <div class="ttl"><div class="l1">ALGORITHMIQUE</div><div class="l2">SCRATCH – RAPPELS DES NOTIONS DE BASE (5ème – 4ème)</div></div>
+    <div class="yr">2026</div>
+    <div class="lvl">3<sup>ème</sup></div>
+  </header>
+
+  <h2 class="sec">1. RAPPELS : LE REPÈRE, LES INSTRUCTIONS, LES BOUCLES, LES CONDITIONS, LES VARIABLES</h2>
+  <p class="lead">Chaque ligne présente le même programme sous trois formes (texte, organigramme, blocs Scratch), puis ce qu’il produit à l’écran. <i>Clique sur une figure pour rejouer l’animation.</i></p>
+
+  <h3 class="nh" style="margin-top:6px">LES COORDONNÉES :</h3>
+  <div class="box coords" style="margin-top:8px">
+    <div><svg class="stagebig" viewBox="-14 -6 268.0 200.0" role="img" aria-label="Repère de la scène Scratch"><rect class="stage" x="0" y="0" width="240.0" height="180.0"/><line class="gr" x1="0.0" y1="0" x2="0.0" y2="180.0"/><line class="gr" x1="20.0" y1="0" x2="20.0" y2="180.0"/><line class="gr" x1="40.0" y1="0" x2="40.0" y2="180.0"/><line class="gr" x1="60.0" y1="0" x2="60.0" y2="180.0"/><line class="gr" x1="80.0" y1="0" x2="80.0" y2="180.0"/><line class="gr" x1="100.0" y1="0" x2="100.0" y2="180.0"/><line class="gr ax" x1="120.0" y1="0" x2="120.0" y2="180.0"/><line class="gr" x1="140.0" y1="0" x2="140.0" y2="180.0"/><line class="gr" x1="160.0" y1="0" x2="160.0" y2="180.0"/><line class="gr" x1="180.0" y1="0" x2="180.0" y2="180.0"/><line class="gr" x1="200.0" y1="0" x2="200.0" y2="180.0"/><line class="gr" x1="220.0" y1="0" x2="220.0" y2="180.0"/><line class="gr" x1="240.0" y1="0" x2="240.0" y2="180.0"/><line class="gr" x1="0" y1="180.0" x2="240.0" y2="180.0"/><line class="gr" x1="0" y1="165.0" x2="240.0" y2="165.0"/><line class="gr" x1="0" y1="150.0" x2="240.0" y2="150.0"/><line class="gr" x1="0" y1="135.0" x2="240.0" y2="135.0"/><line class="gr" x1="0" y1="120.0" x2="240.0" y2="120.0"/><line class="gr" x1="0" y1="105.0" x2="240.0" y2="105.0"/><line class="gr ax" x1="0" y1="90.0" x2="240.0" y2="90.0"/><line class="gr" x1="0" y1="75.0" x2="240.0" y2="75.0"/><line class="gr" x1="0" y1="60.0" x2="240.0" y2="60.0"/><line class="gr" x1="0" y1="45.0" x2="240.0" y2="45.0"/><line class="gr" x1="0" y1="30.0" x2="240.0" y2="30.0"/><line class="gr" x1="0" y1="15.0" x2="240.0" y2="15.0"/><line class="gr" x1="0" y1="0.0" x2="240.0" y2="0.0"/><text class="tick" x="8.0" y="101.0">-240</text><text class="tick" x="60.0" y="101.0">-120</text><text class="tick" x="180.0" y="101.0">120</text><text class="tick" x="232.0" y="101.0">240</text><text class="tick" x="124.0" y="178.0" text-anchor="start">-180</text><text class="tick" x="124.0" y="139.0" text-anchor="start">-90</text><text class="tick" x="124.0" y="49.0" text-anchor="start">90</text><text class="tick" x="124.0" y="10.0" text-anchor="start">180</text><circle class="orig" cx="120.0" cy="90.0" r="3"/><text class="tick b" x="106.0" y="85.0">(0 ; 0)</text><text class="axl" x="234.0" y="84.0" text-anchor="end">x</text><text class="axl" x="114.0" y="11" text-anchor="end">y</text><line class="proj" x1="180.0" y1="45.0" x2="180.0" y2="90.0"/><line class="proj" x1="180.0" y1="45.0" x2="120.0" y2="45.0"/><circle class="pt" cx="180.0" cy="45.0" r="4"/><text class="ptl" x="187.0" y="39.0" text-anchor="start">A (120 ; 90)</text></svg><div class="cap">La scène de Scratch (480 × 360 px)</div></div>
+    <div class="ctext">
+      <p>La scène de Scratch est un <b>repère orthonormé</b> : 480 pixels de large (x de −240 à 240) et 360 de haut (y de −180 à 180). L’origine <b>(0 ; 0)</b> est au centre. Un point s’écrit <b>(x ; y)</b> : on lit toujours l’abscisse x en premier.</p>
+      <p><b>aller à x: … y: …</b> place le lutin en un point ; <b>ajouter … à x</b> (ou à y) le déplace sans le tourner.</p>
+      <p><b>s’orienter à …</b> fixe la direction du lutin (cercle de droite) : <b>0</b> vers le haut · <b>90</b> vers la droite · <b>180</b> vers le bas · <b>−90</b> (ou 270) vers la gauche.</p>
+      <p>Dans Scratch, <b>tourner ↻</b> tourne vers la <b>droite</b> (sens des aiguilles d’une montre) et <b>tourner ↺</b> vers la <b>gauche</b>. Le <b>pixel (px)</b> est l’unité de la scène.</p>
+    </div>
+    <div><svg class="orient" viewBox="0 0 190 190" role="img" aria-label="Cercle d’orientation de Scratch"><circle class="oc" cx="95" cy="95" r="62"/><line class="octk" x1="95.0" y1="33.0" x2="95.0" y2="41.0"/><line class="octk" x1="111.0" y1="35.1" x2="110.0" y2="39.0"/><line class="octk" x1="126.0" y1="41.3" x2="124.0" y2="44.8"/><line class="octk" x1="138.8" y1="51.2" x2="136.0" y2="54.0"/><line class="octk" x1="148.7" y1="64.0" x2="145.2" y2="66.0"/><line class="octk" x1="154.9" y1="79.0" x2="151.0" y2="80.0"/><line class="octk" x1="157.0" y1="95.0" x2="149.0" y2="95.0"/><line class="octk" x1="154.9" y1="111.0" x2="151.0" y2="110.0"/><line class="octk" x1="148.7" y1="126.0" x2="145.2" y2="124.0"/><line class="octk" x1="138.8" y1="138.8" x2="136.0" y2="136.0"/><line class="octk" x1="126.0" y1="148.7" x2="124.0" y2="145.2"/><line class="octk" x1="111.0" y1="154.9" x2="110.0" y2="151.0"/><line class="octk" x1="95.0" y1="157.0" x2="95.0" y2="149.0"/><line class="octk" x1="79.0" y1="154.9" x2="80.0" y2="151.0"/><line class="octk" x1="64.0" y1="148.7" x2="66.0" y2="145.2"/><line class="octk" x1="51.2" y1="138.8" x2="54.0" y2="136.0"/><line class="octk" x1="41.3" y1="126.0" x2="44.8" y2="124.0"/><line class="octk" x1="35.1" y1="111.0" x2="39.0" y2="110.0"/><line class="octk" x1="33.0" y1="95.0" x2="41.0" y2="95.0"/><line class="octk" x1="35.1" y1="79.0" x2="39.0" y2="80.0"/><line class="octk" x1="41.3" y1="64.0" x2="44.8" y2="66.0"/><line class="octk" x1="51.2" y1="51.2" x2="54.0" y2="54.0"/><line class="octk" x1="64.0" y1="41.3" x2="66.0" y2="44.8"/><line class="octk" x1="79.0" y1="35.1" x2="80.0" y2="39.0"/><line class="ocar" x1="95" y1="95" x2="95.0" y2="45.0" marker-end="url(#ah2)"/><text class="ocl" x="95.0" y="21.0">0</text><line class="ocar" x1="95" y1="95" x2="145.0" y2="95.0" marker-end="url(#ah2)"/><text class="ocl" x="175.0" y="99.0">90</text><line class="ocar" x1="95" y1="95" x2="95.0" y2="145.0" marker-end="url(#ah2)"/><text class="ocl" x="95.0" y="177.0">180</text><line class="ocar" x1="95" y1="95" x2="45.0" y2="95.0" marker-end="url(#ah2)"/><text class="ocl" x="15.0" y="99.0">−90</text><text class="ocs" x="175" y="113">droite</text><text class="ocs" x="15" y="113">gauche</text><path class="rot r" d="M117,65 A37,37 0 0 1 131,89" marker-end="url(#ahr)"/><text class="rotl r" x="129" y="65">↻</text><path class="rot l" d="M73,65 A37,37 0 0 0 59,89" marker-end="url(#ahl)"/><text class="rotl l" x="61" y="65">↺</text><circle cx="95" cy="95" r="3" class="orig"/></svg><div class="cap">Cercle d’orientation de Scratch</div></div>
+  </div>
+
+  <div class="legend" aria-label="Catégories de blocs Scratch"><span class="chip mo">Mouvement</span><span class="chip lo">Apparence</span><span class="chip ev">Évènements</span><span class="chip ct">Contrôle</span><span class="chip se">Capteurs</span><span class="chip op">Opérateurs</span><span class="chip va">Variables</span><span class="chip pen">Stylo</span></div>
+
+  <div class="colheads" aria-hidden="true"><div>Algorithme (texte)</div><div>Organigramme (logigramme)</div><div>Programme Scratch (blocs)</div><div>Ce que ça fait</div></div>
+  
+<section class="notion" id="instr">
+  <h3 class="nh"><span class="num">1</span>LES INSTRUCTIONS :</h3>
+  <p class="ndesc">des actions exécutées dans l’ordre, de haut en bas. Un programme comporte un début, une initialisation (position, orientation, effacer) et le programme principal.</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>Début</b></div><div class="al" style="padding-left:0.0em">aller à x:0 y:0</div><div class="al" style="padding-left:0.0em">s’orienter à 90</div><div class="al" style="padding-left:0.0em">stylo en position d’écriture</div><div class="al" style="padding-left:0.0em">avancer de 50</div><div class="al" style="padding-left:0.0em">tourner ↻ de 90°</div><div class="al" style="padding-left:0.0em"><b>Fin</b></div></div></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><svg class="fc" viewBox="-70.5 0 141.1 320.0" style="max-width:148px" role="img" aria-label="Logigramme"><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="58.0" width="112.5" height="24"/><text class="t" x="0.0" y="74.0">aller à x:0 y:0</text><polyline class="ln" points="0.0,82.0 0.0,100.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="100.0" width="112.5" height="24"/><text class="t" x="0.0" y="116.0">s’orienter à 90</text><polyline class="ln" points="0.0,124.0 0.0,142.0" marker-end="url(#ah)"/><rect class="act" x="-62.5" y="142.0" width="125.1" height="38"/><text class="t" x="0.0" y="158.0">stylo en position</text><text class="t" x="0.0" y="172.0">d’écriture</text><polyline class="ln" points="0.0,180.0 0.0,198.0" marker-end="url(#ah)"/><rect class="act" x="-49.9" y="198.0" width="99.9" height="24"/><text class="t" x="0.0" y="214.0">avancer de 50</text><polyline class="ln" points="0.0,222.0 0.0,240.0" marker-end="url(#ah)"/><rect class="act" x="-59.4" y="240.0" width="118.8" height="24"/><text class="t" x="0.0" y="256.0">tourner ↻ de 90°</text><polyline class="ln" points="0.0,264.0 0.0,282.0" marker-end="url(#ah)"/><rect class="term" x="-24.4" y="282.0" width="48.9" height="26" rx="13"/><text class="t b" x="0.0" y="299.0">Fin</text></svg></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="blk mo">aller à x: <span class="in">0</span> y: <span class="in">0</span></div><div class="blk mo">s’orienter à <span class="in">90</span></div><div class="blk pen"><span class="ico">✎</span> stylo en position d’écriture</div><div class="blk mo">avancer de <span class="in">50</span></div><div class="blk mo">tourner ↻ de <span class="in">90</span> degrés</div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap"><svg class="fig" viewBox="-4 -4 108 78" role="img" aria-label="Résultat du programme"><line class="gr" x1="0" y1="0" x2="0" y2="70"/><line class="gr ax" x1="20" y1="0" x2="20" y2="70"/><line class="gr" x1="40" y1="0" x2="40" y2="70"/><line class="gr" x1="60" y1="0" x2="60" y2="70"/><line class="gr" x1="80" y1="0" x2="80" y2="70"/><line class="gr" x1="100" y1="0" x2="100" y2="70"/><line class="gr" x1="0" y1="70" x2="100" y2="70"/><line class="gr" x1="0" y1="50" x2="100" y2="50"/><line class="gr ax" x1="0" y1="30" x2="100" y2="30"/><line class="gr" x1="0" y1="10" x2="100" y2="10"/><path class="pen" pathLength="1" d="M20.0,30.0 L70.0,30.0"/><circle class="orig" cx="20" cy="30" r="2.5"/><g class="sprite" transform="translate(70.0,30.0) rotate(90)"><polygon points="9,0 -6,-6 -3,0 -6,6"/></g></svg></div><p class="what"><b>Un segment de 50 px.</b> « Tourner » ne trace rien : le lutin change seulement de direction (il regarde ensuite vers le bas).</p></div>
+  </div>
+</section>
+<section class="notion" id="loop">
+  <h3 class="nh"><span class="num">2</span>LES BOUCLES RÉPÉTITIVES :</h3>
+  <p class="ndesc">répéter des instructions. « Répéter indéfiniment » ne s’arrête jamais ; « répéter n fois » utilise un compteur ; « répéter jusqu’à » s’arrête quand une condition devient vraie (exemple avec les variables, plus bas).</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>Début</b></div><div class="al" style="padding-left:0.0em">aller à x:0 y:0</div><div class="al" style="padding-left:0.0em">s’orienter à 90</div><div class="al" style="padding-left:0.0em">stylo en position d’écriture</div><div class="al" style="padding-left:0.0em">Compteur ← 0</div><div class="al" style="padding-left:0.0em"><b>TANT QUE</b> Compteur ≠ 4</div><div class="al" style="padding-left:1.7em">avancer de 100</div><div class="al" style="padding-left:1.7em">tourner ↻ de 90°</div><div class="al" style="padding-left:1.7em">Compteur ← Compteur + 1</div><div class="al" style="padding-left:0.0em"><b>Fin</b></div></div><p class="note">(= « répéter 4 fois »)</p></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><svg class="fc" viewBox="-105.5 0 210.9 484.0" style="max-width:221px" role="img" aria-label="Logigramme"><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="58.0" width="112.5" height="24"/><text class="t" x="0.0" y="74.0">aller à x:0 y:0</text><polyline class="ln" points="0.0,82.0 0.0,100.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="100.0" width="112.5" height="24"/><text class="t" x="0.0" y="116.0">s’orienter à 90</text><polyline class="ln" points="0.0,124.0 0.0,142.0" marker-end="url(#ah)"/><rect class="act" x="-62.5" y="142.0" width="125.1" height="38"/><text class="t" x="0.0" y="158.0">stylo en position</text><text class="t" x="0.0" y="172.0">d’écriture</text><polyline class="ln" points="0.0,180.0 0.0,198.0" marker-end="url(#ah)"/><rect class="act" x="-46.8" y="198.0" width="93.6" height="24"/><text class="t" x="0.0" y="214.0">Compteur ← 0</text><polyline class="ln" points="0.0,222.0 0.0,240.0" marker-end="url(#ah)"/><polygon class="dia" points="0,240 64.1,260.0 0,280 -64.1,260.0"/><text class="t" x="0.0" y="264.0">Compteur ≠ 4 ?</text><rect class="act" x="-53.1" y="298.0" width="106.2" height="24"/><text class="t" x="0.0" y="314.0">avancer de 100</text><polyline class="ln" points="0.0,322.0 0.0,340.0" marker-end="url(#ah)"/><rect class="act" x="-59.4" y="340.0" width="118.8" height="24"/><text class="t" x="0.0" y="356.0">tourner ↻ de 90°</text><polyline class="ln" points="0.0,364.0 0.0,382.0" marker-end="url(#ah)"/><rect class="act" x="-81.5" y="382.0" width="162.9" height="24"/><text class="t" x="0.0" y="398.0">Compteur ← Compteur + 1</text><polyline class="ln" points="0.0,280.0 0.0,298.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="292.0" text-anchor="start">Oui</text><polyline class="ln" points="0.0,406.0 0.0,416.0 -97.5,416.0 -97.5,231.0 -3.0,231.0"/><polyline class="ln" points="-3.0,231.0 0.0,231.0 0.0,240.0" marker-end="url(#ah)"/><polyline class="ln" points="64.1,260.0 97.5,260.0 97.5,428.0 0.0,428.0"/><text class="lb" x="68.1" y="255.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,428.0 0.0,446.0" marker-end="url(#ah)"/><rect class="term" x="-24.4" y="446.0" width="48.9" height="26" rx="13"/><text class="t b" x="0.0" y="463.0">Fin</text></svg></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="blk mo">aller à x: <span class="in">0</span> y: <span class="in">0</span></div><div class="blk mo">s’orienter à <span class="in">90</span></div><div class="blk pen"><span class="ico">✎</span> stylo en position d’écriture</div><div class="cb ct"><div class="ctop">répéter <span class="in">4</span> fois</div><div class="cin"><div class="blk mo">avancer de <span class="in">100</span></div><div class="blk mo">tourner ↻ de <span class="in">90</span> degrés</div></div><div class="cbot"></div></div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap"><svg class="fig" viewBox="-4 -4 148 148" role="img" aria-label="Résultat du programme"><line class="gr" x1="0" y1="0" x2="0" y2="140"/><line class="gr ax" x1="20" y1="0" x2="20" y2="140"/><line class="gr" x1="40" y1="0" x2="40" y2="140"/><line class="gr" x1="60" y1="0" x2="60" y2="140"/><line class="gr" x1="80" y1="0" x2="80" y2="140"/><line class="gr" x1="100" y1="0" x2="100" y2="140"/><line class="gr" x1="120" y1="0" x2="120" y2="140"/><line class="gr" x1="140" y1="0" x2="140" y2="140"/><line class="gr" x1="0" y1="140" x2="140" y2="140"/><line class="gr" x1="0" y1="120" x2="140" y2="120"/><line class="gr" x1="0" y1="100" x2="140" y2="100"/><line class="gr" x1="0" y1="80" x2="140" y2="80"/><line class="gr" x1="0" y1="60" x2="140" y2="60"/><line class="gr" x1="0" y1="40" x2="140" y2="40"/><line class="gr ax" x1="0" y1="20" x2="140" y2="20"/><line class="gr" x1="0" y1="0" x2="140" y2="0"/><path class="pen" pathLength="1" d="M20.0,20.0 L120.0,20.0 L120.0,120.0 L20.0,120.0 L20.0,20.0"/><circle class="orig" cx="20" cy="20" r="2.5"/><g class="sprite" transform="translate(20.0,20.0) rotate(360)"><polygon points="9,0 -6,-6 -3,0 -6,6"/></g></svg></div><p class="what"><b>Un carré de côté 100.</b> Les 4 côtés sont tracés par les mêmes instructions répétées 4 fois.</p></div>
+  </div>
+</section>
+<section class="notion" id="nested">
+  <h3 class="nh"><span class="num">3</span>LES BOUCLES IMBRIQUÉES :</h3>
+  <p class="ndesc">une boucle placée à l’intérieur d’une autre boucle (ici, 6 carrés tournés de 60°).</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>Début</b></div><div class="al" style="padding-left:0.0em">aller à x:0 y:0</div><div class="al" style="padding-left:0.0em">s’orienter à 90</div><div class="al" style="padding-left:0.0em">stylo en position d’écriture</div><div class="al" style="padding-left:0.0em">c1 ← 0</div><div class="al" style="padding-left:0.0em"><b>TANT QUE</b> c1 ≠ 6</div><div class="al" style="padding-left:1.7em">c2 ← 0</div><div class="al" style="padding-left:1.7em"><b>TANT QUE</b> c2 ≠ 4</div><div class="al" style="padding-left:3.3em">avancer de 60</div><div class="al" style="padding-left:3.3em">tourner ↻ de 90°</div><div class="al" style="padding-left:3.3em">c2 ← c2 + 1</div><div class="al" style="padding-left:1.7em">tourner ↻ de 60°</div><div class="al" style="padding-left:1.7em">c1 ← c1 + 1</div><div class="al" style="padding-left:0.0em"><b>Fin</b></div></div></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><svg class="fc" viewBox="-99.4 0 198.8 690.0" style="max-width:209px" role="img" aria-label="Logigramme"><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="58.0" width="112.5" height="24"/><text class="t" x="0.0" y="74.0">aller à x:0 y:0</text><polyline class="ln" points="0.0,82.0 0.0,100.0" marker-end="url(#ah)"/><rect class="act" x="-56.2" y="100.0" width="112.5" height="24"/><text class="t" x="0.0" y="116.0">s’orienter à 90</text><polyline class="ln" points="0.0,124.0 0.0,142.0" marker-end="url(#ah)"/><rect class="act" x="-62.5" y="142.0" width="125.1" height="38"/><text class="t" x="0.0" y="158.0">stylo en position</text><text class="t" x="0.0" y="172.0">d’écriture</text><polyline class="ln" points="0.0,180.0 0.0,198.0" marker-end="url(#ah)"/><rect class="act" x="-27.9" y="198.0" width="55.8" height="24"/><text class="t" x="0.0" y="214.0">c1 ← 0</text><polyline class="ln" points="0.0,222.0 0.0,240.0" marker-end="url(#ah)"/><polygon class="dia" points="0,240 45.2,260.0 0,280 -45.2,260.0"/><text class="t" x="0.0" y="264.0">c1 ≠ 6 ?</text><rect class="act" x="-27.9" y="298.0" width="55.8" height="24"/><text class="t" x="0.0" y="314.0">c2 ← 0</text><polyline class="ln" points="0.0,322.0 0.0,340.0" marker-end="url(#ah)"/><polygon class="dia" points="0,340 45.2,360.0 0,380 -45.2,360.0"/><text class="t" x="0.0" y="364.0">c2 ≠ 4 ?</text><rect class="act" x="-49.9" y="398.0" width="99.9" height="24"/><text class="t" x="0.0" y="414.0">avancer de 60</text><polyline class="ln" points="0.0,422.0 0.0,440.0" marker-end="url(#ah)"/><rect class="act" x="-59.4" y="440.0" width="118.8" height="24"/><text class="t" x="0.0" y="456.0">tourner ↻ de 90°</text><polyline class="ln" points="0.0,464.0 0.0,482.0" marker-end="url(#ah)"/><rect class="act" x="-43.6" y="482.0" width="87.3" height="24"/><text class="t" x="0.0" y="498.0">c2 ← c2 + 1</text><polyline class="ln" points="0.0,380.0 0.0,398.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="392.0" text-anchor="start">Oui</text><polyline class="ln" points="0.0,506.0 0.0,516.0 -75.4,516.0 -75.4,331.0 -3.0,331.0"/><polyline class="ln" points="-3.0,331.0 0.0,331.0 0.0,340.0" marker-end="url(#ah)"/><polyline class="ln" points="45.2,360.0 75.4,360.0 75.4,528.0 0.0,528.0"/><text class="lb" x="49.2" y="355.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,528.0 0.0,546.0" marker-end="url(#ah)"/><rect class="act" x="-59.4" y="546.0" width="118.8" height="24"/><text class="t" x="0.0" y="562.0">tourner ↻ de 60°</text><polyline class="ln" points="0.0,570.0 0.0,588.0" marker-end="url(#ah)"/><rect class="act" x="-43.6" y="588.0" width="87.3" height="24"/><text class="t" x="0.0" y="604.0">c1 ← c1 + 1</text><polyline class="ln" points="0.0,280.0 0.0,298.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="292.0" text-anchor="start">Oui</text><polyline class="ln" points="0.0,612.0 0.0,622.0 -91.4,622.0 -91.4,231.0 -3.0,231.0"/><polyline class="ln" points="-3.0,231.0 0.0,231.0 0.0,240.0" marker-end="url(#ah)"/><polyline class="ln" points="45.2,260.0 91.4,260.0 91.4,634.0 0.0,634.0"/><text class="lb" x="49.2" y="255.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,634.0 0.0,652.0" marker-end="url(#ah)"/><rect class="term" x="-24.4" y="652.0" width="48.9" height="26" rx="13"/><text class="t b" x="0.0" y="669.0">Fin</text></svg></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="blk mo">aller à x: <span class="in">0</span> y: <span class="in">0</span></div><div class="blk mo">s’orienter à <span class="in">90</span></div><div class="blk pen"><span class="ico">✎</span> stylo en position d’écriture</div><div class="cb ct"><div class="ctop">répéter <span class="in">6</span> fois</div><div class="cin"><div class="cb ct"><div class="ctop">répéter <span class="in">4</span> fois</div><div class="cin"><div class="blk mo">avancer de <span class="in">60</span></div><div class="blk mo">tourner ↻ de <span class="in">90</span> degrés</div></div><div class="cbot"></div></div><div class="blk mo">tourner ↻ de <span class="in">60</span> degrés</div></div><div class="cbot"></div></div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap"><svg class="fig" viewBox="-4 -4 188 188" role="img" aria-label="Résultat du programme"><line class="gr" x1="10" y1="0" x2="10" y2="180"/><line class="gr" x1="30" y1="0" x2="30" y2="180"/><line class="gr" x1="50" y1="0" x2="50" y2="180"/><line class="gr" x1="70" y1="0" x2="70" y2="180"/><line class="gr ax" x1="90" y1="0" x2="90" y2="180"/><line class="gr" x1="110" y1="0" x2="110" y2="180"/><line class="gr" x1="130" y1="0" x2="130" y2="180"/><line class="gr" x1="150" y1="0" x2="150" y2="180"/><line class="gr" x1="170" y1="0" x2="170" y2="180"/><line class="gr" x1="0" y1="170" x2="180" y2="170"/><line class="gr" x1="0" y1="150" x2="180" y2="150"/><line class="gr" x1="0" y1="130" x2="180" y2="130"/><line class="gr" x1="0" y1="110" x2="180" y2="110"/><line class="gr ax" x1="0" y1="90" x2="180" y2="90"/><line class="gr" x1="0" y1="70" x2="180" y2="70"/><line class="gr" x1="0" y1="50" x2="180" y2="50"/><line class="gr" x1="0" y1="30" x2="180" y2="30"/><line class="gr" x1="0" y1="10" x2="180" y2="10"/><path class="pen" pathLength="1" d="M90.0,90.0 L150.0,90.0 L150.0,150.0 L90.0,150.0 L90.0,90.0 L120.0,142.0 L68.0,172.0 L38.0,120.0 L90.0,90.0 L60.0,142.0 L8.0,112.0 L38.0,60.0 L90.0,90.0 L30.0,90.0 L30.0,30.0 L90.0,30.0 L90.0,90.0 L60.0,38.0 L112.0,8.0 L142.0,60.0 L90.0,90.0 L120.0,38.0 L172.0,68.0 L142.0,120.0 L90.0,90.0"/><circle class="orig" cx="90" cy="90" r="2.5"/><g class="sprite" transform="translate(90.0,90.0) rotate(2520)"><polygon points="9,0 -6,-6 -3,0 -6,6"/></g></svg></div><p class="what"><b>Une rosace de 6 carrés de côté 60.</b> La petite boucle trace un carré ; la grande le répète 6 fois en tournant de 60° à chaque fois.</p></div>
+  </div>
+</section>
+<section class="notion" id="cond">
+  <h3 class="nh"><span class="num">4</span>LES INSTRUCTIONS CONDITIONNELLES :</h3>
+  <p class="ndesc">« si … alors … » exécute une action seulement si la condition est vraie ; « si … alors … sinon … » choisit entre deux actions.</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>RÉPÉTER INDÉFINIMENT</b></div><div class="al" style="padding-left:1.7em"><b>SI</b> touche espace pressée</div><div class="al" style="padding-left:1.7em"><b>ALORS</b> dire « Bravo » pendant 2 s</div></div><div class="sep"></div><div class="algo"><div class="al" style="padding-left:0.0em"><b>RÉPÉTER INDÉFINIMENT</b></div><div class="al" style="padding-left:1.7em"><b>SI</b> touche espace pressée</div><div class="al" style="padding-left:1.7em"><b>ALORS</b> dire « Appui »</div><div class="al" style="padding-left:1.7em"><b>SINON</b> dire « Relâché »</div></div></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><div class="fcpair"><svg class="fc" viewBox="-84.9 0 169.9 206.0" style="max-width:178px" role="img" aria-label="Logigramme"><text class="ft" x="-80.9" y="10">Programme 1</text><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><polygon class="dia" points="0,58 60.949999999999996,85.0 0,112 -60.949999999999996,85.0"/><text class="t" x="0.0" y="82.0">touche espace</text><text class="t" x="0.0" y="96.0">pressée ?</text><polyline class="ln" points="0.0,112.0 0.0,130.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="124.0" text-anchor="start">Oui</text><rect class="act" x="-53.1" y="130.0" width="106.2" height="38"/><text class="t" x="0.0" y="146.0">dire « Bravo »</text><text class="t" x="0.0" y="160.0">pendant 2 s</text><polyline class="ln" points="60.9,85.0 76.9,85.0 76.9,182.0 0.0,182.0"/><polyline class="ln" points="0.0,168.0 0.0,182.0"/><text class="lb" x="64.9" y="80.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,182.0 0.0,194.0 -76.9,194.0 -76.9,49.0 0.0,49.0 0.0,58.0" marker-end="url(#ah)"/></svg><svg class="fc" viewBox="-115.0 0 220.3 185.0" style="max-width:231px" role="img" aria-label="Logigramme"><text class="ft" x="-111.0" y="10">Programme 2</text><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><polygon class="dia" points="0,58 60.949999999999996,85.0 0,112 -60.949999999999996,85.0"/><text class="t" x="0.0" y="82.0">touche espace</text><text class="t" x="0.0" y="96.0">pressée ?</text><polyline class="ln" points="-60.9,85.0 -53.6,85.0 -53.6,109.0" marker-end="url(#ah)"/><polyline class="ln" points="60.9,85.0 53.6,85.0 53.6,109.0" marker-end="url(#ah)"/><text class="lb" x="-64.9" y="80.0" text-anchor="end">Oui</text><text class="lb" x="64.9" y="80.0" text-anchor="start">Non</text><rect class="act" x="-91.0" y="109.0" width="74.7" height="38"/><text class="t" x="-53.6" y="125.0">dire</text><text class="t" x="-53.6" y="139.0">« Appui »</text><rect class="act" x="10.0" y="109.0" width="87.3" height="38"/><text class="t" x="53.6" y="125.0">dire</text><text class="t" x="53.6" y="139.0">« Relâché »</text><polyline class="ln" points="-53.6,147.0 -53.6,161.0 53.6,161.0 53.6,147.0"/><polyline class="ln" points="0.0,161.0 0.0,173.0 -107.0,173.0 -107.0,49.0 0.0,49.0 0.0,58.0" marker-end="url(#ah)"/></svg></div></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="stack"><span class="tag">Programme 1</span><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="cb ct"><div class="ctop">répéter indéfiniment</div><div class="cin"><div class="cb ct"><div class="ctop">si <span class="bool se">touche <span class="dd">espace ▾</span> pressée ?</span> alors</div><div class="cin"><div class="blk lo">dire <span class="in">Bravo</span> pendant <span class="in">2</span> secondes</div></div><div class="cbot"></div></div></div><div class="cbot cap"></div></div></div><span class="tag">Programme 2</span><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="cb ct"><div class="ctop">répéter indéfiniment</div><div class="cin"><div class="cb ct"><div class="ctop">si <span class="bool se">touche <span class="dd">espace ▾</span> pressée ?</span> alors</div><div class="cin"><div class="blk lo">dire <span class="in">Appui</span></div></div><div class="cmid">sinon</div><div class="cin"><div class="blk lo">dire <span class="in">Relâché</span></div></div><div class="cbot"></div></div></div><div class="cbot cap"></div></div></div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap">
+<div class="demo">
+  <div class="demo-row"><span class="tag">Programme 1</span>
+    <div class="kbd" data-key="b1">espace</div> <span class="arrow">→</span> <div class="bubble ">Bravo</div><span class="small">(2 s)</span></div>
+  <div class="demo-row"><span class="tag">Programme 2</span>
+    <div class="kbd">espace ↓</div> <span class="arrow">→</span> <div class="bubble ">Appui</div></div>
+  <div class="demo-row"><span class="tag" style="visibility:hidden">Programme 2</span>
+    <div class="kbd up">espace ↑</div> <span class="arrow">→</span> <div class="bubble ">Relâché</div></div>
+</div></div><p class="what"><b>Programme 1 :</b> le lutin dit « Bravo » pendant 2 secondes à chaque appui sur la touche espace. <b>Programme 2 :</b> il dit « Appui » tant que la touche espace est pressée, et « Relâché » sinon.</p></div>
+  </div>
+</section>
+<section class="notion" id="sens">
+  <h3 class="nh"><span class="num">5</span>LES CAPTEURS ET LES OPÉRATEURS :</h3>
+  <p class="ndesc">capteurs (<span class="sw se"></span> bleu clair) : touche … pressée ? · couleur … touchée ? · distance de … · souris pressée ? · réponse. Opérateurs (<span class="sw op"></span> vert) : comparer (&lt; &gt; =) · et / ou / non · calculer (+ − × ÷).</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>RÉPÉTER INDÉFINIMENT</b></div><div class="al" style="padding-left:1.7em"><b>SI</b> flèche droite pressée</div><div class="al" style="padding-left:1.7em"><b>ET</b> abscisse x &lt; 200</div><div class="al" style="padding-left:1.7em"><b>ALORS</b> ajouter 10 à x</div></div></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><svg class="fc" viewBox="-110.1 0 220.3 192.0" style="max-width:231px" role="img" aria-label="Logigramme"><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><polygon class="dia" points="0,58 86.14999999999999,85.0 0,112 -86.14999999999999,85.0"/><text class="t" x="0.0" y="82.0">flèche droite pressée</text><text class="t" x="0.0" y="96.0">ET x &lt; 200 ?</text><polyline class="ln" points="0.0,112.0 0.0,130.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="124.0" text-anchor="start">Oui</text><rect class="act" x="-53.1" y="130.0" width="106.2" height="24"/><text class="t" x="0.0" y="146.0">ajouter 10 à x</text><polyline class="ln" points="86.1,85.0 102.1,85.0 102.1,168.0 0.0,168.0"/><polyline class="ln" points="0.0,154.0 0.0,168.0"/><text class="lb" x="90.1" y="80.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,168.0 0.0,180.0 -102.1,180.0 -102.1,49.0 0.0,49.0 0.0,58.0" marker-end="url(#ah)"/></svg></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="script tight"><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="cb ct"><div class="ctop">répéter indéfiniment</div><div class="cin"><div class="cb ct"><div class="ctop">si <span class="bool op"><span class="bool se">touche <span class="dd">flèche droite ▾</span> pressée ?</span> et <span class="bool op"><span class="rep mo">abscisse x</span> &lt; <span class="in">200</span></span></span> alors</div><div class="cin"><div class="blk mo">ajouter <span class="in">10</span> à x</div></div><div class="cbot"></div></div></div><div class="cbot cap"></div></div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap"><svg class="fig wide" viewBox="-4 0 270 70" role="img" aria-label="Le lutin s’arrête à x = 200"><line class="gr ax" x1="0" y1="45" x2="240" y2="45"/><line class="gr" x1="16.0" y1="41" x2="16.0" y2="49"/><text class="tick" x="16.0" y="62">-40</text><line class="gr" x1="48.0" y1="41" x2="48.0" y2="49"/><text class="tick" x="48.0" y="62">0</text><line class="gr" x1="80.0" y1="41" x2="80.0" y2="49"/><text class="tick" x="80.0" y="62">40</text><line class="gr" x1="112.0" y1="41" x2="112.0" y2="49"/><text class="tick" x="112.0" y="62">80</text><line class="gr" x1="144.0" y1="41" x2="144.0" y2="49"/><text class="tick" x="144.0" y="62">120</text><line class="gr" x1="176.0" y1="41" x2="176.0" y2="49"/><text class="tick" x="176.0" y="62">160</text><line class="gr" x1="208.0" y1="41" x2="208.0" y2="49"/><text class="tick" x="208.0" y="62">200</text><line class="gr" x1="240.0" y1="41" x2="240.0" y2="49"/><text class="tick" x="240.0" y="62">240</text><line class="limit" x1="208.0" y1="6" x2="208.0" y2="50"/><text class="lim" x="212.0" y="14">x = 200</text><line class="track" x1="48.0" y1="30" x2="208.0" y2="30" pathLength="1"/><g class="sprite mover" style="--dx:160.0px"><g transform="translate(48.0,30)"><polygon points="9,0 -6,-6 -3,0 -6,6"/></g></g></svg></div><p class="what"><b>Le lutin avance vers la droite</b> tant qu’on appuie sur la flèche droite, et <b>s’arrête à x = 200</b>.</p></div>
+  </div>
+</section>
+<section class="notion" id="var">
+  <h3 class="nh"><span class="num">6</span>LES VARIABLES :</h3>
+  <p class="ndesc">une variable mémorise une valeur : « mettre … à … » (initialiser), « ajouter à … … » (modifier), comparer (&gt; &lt; =).</p>
+  <div class="grid4">
+    <div class="col"><div class="colh">Algorithme (texte)</div><div class="algo"><div class="al" style="padding-left:0.0em"><b>Début</b></div><div class="al" style="padding-left:0.0em">Score ← 0</div><div class="al" style="padding-left:0.0em"><b>RÉPÉTER JUSQU’À</b> Score &gt; 5</div><div class="al" style="padding-left:1.7em">Score ← Score + 1</div><div class="al" style="padding-left:0.0em">dire « Gagné ! »</div><div class="al" style="padding-left:0.0em"><b>Fin</b></div></div></div>
+    <div class="col"><div class="colh">Organigramme (logigramme)</div><div class="fcwrap"><svg class="fc" viewBox="-86.5 0 173.1 316.0" style="max-width:182px" role="img" aria-label="Logigramme"><rect class="term" x="-30.8" y="14.0" width="61.5" height="26" rx="13"/><text class="t b" x="0.0" y="31.0">Début</text><polyline class="ln" points="0.0,40.0 0.0,58.0" marker-end="url(#ah)"/><rect class="act" x="-37.3" y="58.0" width="74.7" height="24"/><text class="t" x="0.0" y="74.0">Score ← 0</text><polyline class="ln" points="0.0,82.0 0.0,100.0" marker-end="url(#ah)"/><polygon class="dia" points="0,100 54.65,120.0 0,140 -54.65,120.0"/><text class="t" x="0.0" y="124.0">Score &gt; 5 ?</text><rect class="act" x="-62.5" y="158.0" width="125.1" height="24"/><text class="t" x="0.0" y="174.0">Score ← Score + 1</text><polyline class="ln" points="0.0,140.0 0.0,158.0" marker-end="url(#ah)"/><text class="lb" x="5.0" y="152.0" text-anchor="start">Non</text><polyline class="ln" points="0.0,182.0 0.0,192.0 -78.5,192.0 -78.5,91.0 -3.0,91.0"/><polyline class="ln" points="-3.0,91.0 0.0,91.0 0.0,100.0" marker-end="url(#ah)"/><polyline class="ln" points="54.6,120.0 78.5,120.0 78.5,204.0 0.0,204.0"/><text class="lb" x="58.6" y="115.0" text-anchor="start">Oui</text><polyline class="ln" points="0.0,204.0 0.0,222.0" marker-end="url(#ah)"/><rect class="act" x="-59.4" y="222.0" width="118.8" height="38"/><text class="t" x="0.0" y="238.0">dire « Gagné ! »</text><text class="t" x="0.0" y="252.0">pendant 2 s</text><polyline class="ln" points="0.0,260.0 0.0,278.0" marker-end="url(#ah)"/><rect class="term" x="-24.4" y="278.0" width="48.9" height="26" rx="13"/><text class="t b" x="0.0" y="295.0">Fin</text></svg></div></div>
+    <div class="col"><div class="colh">Programme Scratch (blocs)</div><div class="blkwrap"><div class="script "><div class="blk ev hat">quand <span class="flag">⚑</span> est cliqué</div><div class="blk va">mettre <span class="dd">Score ▾</span> à <span class="in">0</span></div><div class="cb ct"><div class="ctop">répéter jusqu’à <span class="bool op"><span class="rep va">Score</span> &gt; <span class="in">5</span></span></div><div class="cin"><div class="blk va">ajouter <span class="in">1</span> à <span class="dd">Score ▾</span></div></div><div class="cbot"></div></div><div class="blk lo">dire <span class="in">Gagné !</span> pendant <span class="in">2</span> secondes</div></div></div></div>
+    <div class="col res"><div class="colh">Ce que ça fait <button class="replay" type="button" title="Rejouer l’animation">▶ Rejouer</button></div>
+      <div class="figwrap">
+<div class="counter" aria-label="Score passe de 0 à 6">
+  <div class="vrow"><span class="vname">Score</span>
+  <span class="cells"><span class="cell" style="--k:0">0</span><span class="cell" style="--k:1">1</span><span class="cell" style="--k:2">2</span><span class="cell" style="--k:3">3</span><span class="cell" style="--k:4">4</span><span class="cell" style="--k:5">5</span><span class="cell" style="--k:6">6</span></span></div>
+  <div class="vend"><div class="bubble late">Gagné !</div></div>
+</div></div><p class="what"><b>Score passe de 0 à 6</b> (une unité à la fois), puis le lutin dit « Gagné ! » pendant 2 secondes.</p></div>
+  </div>
+</section>
+
+  <footer>Lycée français d’Oslo – Gilles Daram – Année scolaire 2026-2027 – Technologie 3ème</footer>
+</div>
+<script>
+(function(){
+  function play(el){ el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); }
+  document.querySelectorAll('.notion').forEach(function(n){
+    var r = n.querySelector('.res');
+    var b = n.querySelector('.replay');
+    if(b) b.addEventListener('click', function(){ play(r); });
+    var f = n.querySelector('.figwrap');
+    if(f){ f.style.cursor='pointer'; f.addEventListener('click', function(){ play(r); }); }
+  });
+  // la rosace est plus longue à tracer
+  var nr = document.querySelector('#nested .res'); if(nr) nr.style.setProperty('--dur','4s');
+  var lr = document.querySelector('#loop .res'); if(lr) lr.style.setProperty('--dur','2s');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ play(e.target); io.unobserve(e.target);} });
+    },{threshold:.4});
+    document.querySelectorAll('.res').forEach(function(r){ io.observe(r); });
+  } else {
+    document.querySelectorAll('.res').forEach(play);
+  }
+})();
+</script>
+</body>
+</html>
